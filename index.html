@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title> Unreal Engine like Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            color: #fff;
+        }
+
+        header {
+            background-color: #333;
+            padding: 1em;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #555;
+            padding: 1em;
+            text-align: left;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            margin: 0 1em;
+            border-radius: 5px;
+            background-color: #777;
+        }
+
+        .homeContainer {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            display:flex;
+            flex-direction:column;
+            justify-content:flex-start;
+            margin:0;
+            padding:0;
+        }
+
+        body {
+            overflow:auto;
+        }
+        .video-background {
+            position: absolute;
+            width:100%;
+            height:100%;
+            object-fit: cover;
+            z-index: -1;
+            text-align: center;
+         /* Add this line to limit the height */
+        }
+
+        section {
+            padding: 2em;
+            height:100vh;
+        }
+
+        section h2 {
+            color: #00f; /* Adjust the color as needed */
+        }
+
+        section p {
+            margin-bottom: 1.5em;
+        }
+
+        footer {
+            background-color: #333;
+            padding: 1em;
+            text-align: center;
+        }
+
+        
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            text-align:left;
+        }
+
+        .homeButton {
+            background-color:transparent;
+            border-color:#00f;
+            border-width: 2px;
+            margin-top:4px;
+            color:white;
+        }
+
+        .aboutContainer {
+            display:flex;
+            flex-direction:row;
+            justify-content: space-around;
+        }
+
+        #about {
+            padding:10px;
+            margin:5px;
+            height:100vh;
+        }
+
+        .aboutContainer1 {
+            font-size:30px;
+            width:50vw;
+            
+        }
+
+        .aboutContainer2 {
+            margin:9px;
+            width:50vw;
+            padding-left:100px;
+            padding-right:100px;
+        }
+
+       
+
+        .purchaseContainer {
+            margin: 50px auto;
+            background-color:red;
+        }
+
+        .dropdown {
+            display: inline-block;
+            position: relative;
+        }
+
+        .dropdown-select {
+            padding: 10px;
+            background-color: #555;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width:200px;
+        }
+
+        .dropdown-options {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .dropdown-options a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-options a:hover {
+            background-color: #f5f5f5;
+        }
+
+        .dropdown:hover .dropdown-options {
+            display: block;
+        }
+
+        .purchaseButton {
+            background-color:yellow;
+        }
+
+        .purchaseC {
+            text-align:center;
+        }
+
+        .communityContainer {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            background-color:transparent;
+        }
+        .communityContainer1 {
+            display:flex;
+            flex-direction:row;
+            justify-content: space-between;
+        }
+
+        .join-container {
+            text-align: center;
+        }
+
+        .join-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .community-container {
+            text-align: center;
+        }
+
+        .faq-section {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+
+        .faq-header {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .logos-section {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .logo {
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+        .join-options {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .join-option {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #community {
+            background-color:transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Your Unreal Engine</h1>
+    </header>
+    
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#media">Media</a>
+        <a href="#news">News</a>
+        <a href="#purchase">Purchase</a>
+        <a href="#socialMedia">Social Media</a>
+        <a href="#contact">Contact Us</a>
+    </nav>
+
+    <section id="home" class="homeContainer parallax parallax-text">
+        <div class="video-container">
+            <iframe class="video-background" id="videoBackground" height="100vh" style="overflow-x:none;" src="https://www.youtube.com/embed/B1TRRiLOw0Q?autoplay=1&controls=0&showinfo=0&autohide=1&mute=1&rel=0&modestbranding=1&enablejsapi=1" allowfullscreen></iframe>
+        </div>
+        <div class="content">
+            <h1>Built by developers.</h1>
+            <h1>For developers.</h1>
+            <h1>With fair terms for all.</h1>
+            <h1>Let's build incredible things together.</h1>
+            <button class="homeButton">LEARN MORE ABOUT UES</button>
+        </div>
+    </section>
+
+    <section id="about" class="parallax parallax-text">
+        <div class="aboutContainer">
+            <div class="aboutContainer1">
+                <h1>about Skater Republic.</h1>
+            </div>
+            <div class="aboutContainer2">
+                <p>
+                Introducing Skater Republic, the thrilling upcoming arcade game that puts you right in the heart of
+                a dynamic skateboarding adventure! Explore expansive skateparks, bustling cityscapes, and renowned 
+                real-life locations for an immersive experience like no other. Featuring intuitive controls, 
+                a sophisticated trick system, and a compelling progression framework, players will find themselves
+                immersed in a world where every achievement feels truly gratifying. Keep an eye out as we work
+                diligently to bring this extraordinary gaming experience to life.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="purchase" class="parallax parallax-text">
+        <div class="purchaseC">
+            <h1>Purchase platform</h1>
+            <div>
+                <select id="selectOption1" class="purchaseContainer" style="width: 200px;" onchange="displaySelectedValue1()">
+                    <option value="option1">INDIA</option>
+                    <option value="option2">USA</option>
+                    <option value="option3">JAPAN</option>
+                </select>
+            </div>
+
+            <div>
+                <select id="selectOption2" class="purchaseContainer" style="width: 200px;" onchange="displaySelectedValue2()">
+                    <option value="option1">EPIC</option>
+                    <option value="option2">XBOX</option>
+                    <option value="option3">PS5</option>
+                </select>
+            </div>
+            
+            <div >
+                <select id="selectOption3" class="purchaseContainer" style="width: 200px;" onchange="displaySelectedValue3()">
+                    <option value="option1">DIGITAL DELUXE EDITION</option>
+                    <option value="option2">DIGITAL EDITION</option>
+                </select>
+            </div>
+           
+            <button class="purchaseButton">PURCHASE</button>
+        </div>
+        
+    </section>
+
+    <section id="community" class="parallax parallax-text">
+        <h1 style="text-align:center;">Community page</h1>
+        <div>
+            <div class="communityContainer join-container">
+                <h1>Join the community</h1>
+                <p>The official skater republic. Discord server</p>
+                <button class="join-button">Join In</button>
+            </div>
+        
+            <div class="communityContainer1 community-container">
+
+                <div class="join-options">
+                    <button class="join-option">Join the Community</button>
+                    <!-- Add more join options as needed -->
+                </div>
+        
+                    <div class="social-icons">
+                        <h1>Join the conversation</h1>
+                        <a href="https://www.facebook.com/" target="_blank" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <!-- Add more social media icons as needed -->
+                    </div>
+        
+               
+            </div>
+        </div>
+    </section>
+
+    <!-- Add more sections as needed -->
+
+    <script>
+        function displaySelectedValue1() {
+          // Get the selected value from the dropdown
+          var selectedOption1 = document.getElementById("selectOption1").value;
+        }
+
+        function displaySelectedValue2() {
+          // Get the selected value from the dropdown
+          var selectedOption2 = document.getElementById("selectOption2").value;
+        }
+      </script>
+      <script>
+        // Function to control video playback and loop
+        function onYouTubeIframeAPIReady() {
+            var player = new YT.Player('videoBackground', {
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.playVideo();
+        }
+
+        function onPlayerStateChange(event) {
+            if (event.data === YT.PlayerState.ENDED) {
+                event.target.playVideo(); // Restart the video when it ends
+            }
+        }
+    </script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+
+    <footer>
+        <p>&copy; 2024 Your Unreal Engine. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
